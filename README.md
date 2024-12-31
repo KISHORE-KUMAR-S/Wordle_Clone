@@ -1,3 +1,1 @@
-# wordle_clone
-
-A new Flutter project.
+# Wordle Clone
