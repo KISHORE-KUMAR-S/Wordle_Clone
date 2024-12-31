@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class WordleLetterBox extends StatelessWidget {
-  const WordleLetterBox({super.key});
+  final String? letter;
+
+  const WordleLetterBox({super.key, this.letter});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,10 @@ class WordleLetterBox extends StatelessWidget {
         color: Colors.grey.shade300,
         width: 2,
       )),
+      child: Text(
+        letter ?? "",
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

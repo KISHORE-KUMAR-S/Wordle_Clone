@@ -11,11 +11,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: WordlePage(),
-        ),
-      ),
+      home: Scaffold(body: Center(child: WordlePage())),
     );
   }
 }
