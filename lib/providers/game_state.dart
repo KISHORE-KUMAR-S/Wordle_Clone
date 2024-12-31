@@ -65,19 +65,29 @@ class GameStateNotifier extends StateNotifier<GameState> {
   }
 
   void updateCurrentAttempt(String key) {
+    final attempts = state.attempts;
+
+    if (attempts.length <= state.settings.wordSize) {
+      attempts.add("");
+    }
+
+    var currentAttempt = attempts[state.attempted];
+
     if (key == "_") {
       // Handle "Enter" Key
+      if (currentAttempt.length < state.settings.wordSize) {
+        debugPrint("Attempted Word Incomplete");
+        return;
+      }
     } else if (key == "<") {
       // Handle "Backspace" Key
-    } else {
-      final attempts = state.attempts;
-
-      if (attempts.length <= state.settings.wordSize) {
-        attempts.add("");
+      if (currentAttempt.isEmpty) {
+        debugPrint("Cannot backspace on empty string");
+        return;
       }
 
-      var currentAttempt = attempts[state.attempted];
-
+      currentAttempt = currentAttempt.substring(0, currentAttempt.length - 1);
+    } else {
       if (currentAttempt.length >= state.settings.wordSize) {
         debugPrint("Trying to type word longer than correct word length");
 
@@ -85,10 +95,17 @@ class GameStateNotifier extends StateNotifier<GameState> {
       }
 
       currentAttempt += key;
-      debugPrint(currentAttempt);
+    }
 
+    debugPrint(currentAttempt);
+
+    if (key != "_") {
       attempts[state.attempted] = currentAttempt;
       state = state.clone(attempts: attempts);
+    }
+
+    if (key == "_") {
+      state = state.clone(attempted: state.attempted + 1);
     }
   }
 }

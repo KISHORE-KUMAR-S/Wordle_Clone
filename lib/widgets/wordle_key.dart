@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wordle_clone/providers/game_state.dart';
+import '../providers/game_state.dart';
 
 class WordleKey extends ConsumerWidget {
   final String letter;
@@ -20,7 +20,7 @@ class WordleKey extends ConsumerWidget {
       width = 60;
 
       keyCap = Text(
-        letter,
+        letter.toUpperCase(),
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       );
     }

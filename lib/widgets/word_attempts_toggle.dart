@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wordle_clone/providers/game_settings.dart';
+import '../providers/game_settings.dart';
 
 class WordAttemptsToggle extends ConsumerWidget {
   const WordAttemptsToggle({super.key});

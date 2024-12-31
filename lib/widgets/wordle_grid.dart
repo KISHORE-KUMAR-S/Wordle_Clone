@@ -24,9 +24,17 @@ class WordleGrid extends ConsumerWidget {
             word = gameState.attempts[index];
           }
 
+          var attempted = false;
+
+          if (gameState.attempted > index) {
+            attempted = true;
+          }
+
           return WordleRow(
             wordSize: wordSize,
             word: word,
+            attempted: attempted,
+            correctWord: gameState.correctWord,
           );
         },
       ),

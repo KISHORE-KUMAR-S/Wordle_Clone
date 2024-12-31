@@ -4,21 +4,33 @@ import 'wordle_letter_box.dart';
 class WordleRow extends StatelessWidget {
   final int wordSize;
   final String word;
+  final String correctWord;
+  final bool attempted;
 
   const WordleRow({
     super.key,
     required this.wordSize,
     required this.word,
+    required this.attempted,
+    required this.correctWord,
   });
 
   @override
   Widget build(BuildContext context) {
     final List<WordleLetterBox> boxes = List.generate(wordSize, (index) {
+      var letter = "";
+
       if (word.length > index) {
-        return WordleLetterBox(letter: word[index]);
+        letter = word[index];
       }
 
-      return const WordleLetterBox();
+      return WordleLetterBox(
+        position: index,
+        letter: letter,
+        attempted: attempted,
+        correctWord: correctWord,
+        word: word,
+      );
     });
 
     return Row(

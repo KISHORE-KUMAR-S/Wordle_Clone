@@ -9,9 +9,9 @@ class WordleKeyboard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        buildKeyRows("QWERTYUIOP"),
-        buildKeyRows("ASDFGHJKL"),
-        buildKeyRows("_ZXCVBNM<"),
+        buildKeyRows("qwertyuiop"),
+        buildKeyRows("asdfghjkl"),
+        buildKeyRows("_zxcvbnm<"),
       ],
     );
   }
