@@ -1,0 +1,16 @@
+name: Wordle Clone 
+on:
+    push:
+        branches:
+            - main
+jobs:
+    build: 
+        name: Build Web and Deploy
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: subosito/flutter-action@v2
+              with:
+                channel: 'stable'
+            - run: flutter pub get
+            - run: flutter build web --release
